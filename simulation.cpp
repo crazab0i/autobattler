@@ -19,30 +19,6 @@ Player createPlayer() {
 	return player;
 }
 
-void battle(Player &player) {
-	clearConsole();
-	resetPlayer(player);
-	Warrior warrior;
-	while (warrior.isAlive() && player.isAlive()) {
-		stepThrough(player, warrior);
-	}
-	std::cout << "Battle End " << "\n";
-	player.printStats();
-}
-
-void stepThrough(Player &player, Warrior &warrior) {
-	player.basicAttack(warrior);
-	delay(500);
-	if (warrior.isAlive()) {
-		warrior.basicAttack(player);
-		delay(500);
-		if (!player.isAlive()) {
-			player.death();
-		}
-	} else {
-		warrior.death();
-	}
-}
 void resetPlayer(Player &player) {
-	
+	player.setCurrentHealth(player.getMaxHealth());
 }

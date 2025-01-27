@@ -23,6 +23,8 @@ class Entity {
 	bool alive;
 	std::vector<Ability> abilities;
 	public:
+	virtual ~Entity() {}
+	
 	Entity(std::string name, double health, double attack, double mana, double manaGeneration, bool alive) 
 		:name(name), maxHealth(health), currentHealth(health), attack(attack), mana(mana), manaGeneration(manaGeneration), alive(alive) {}
 
@@ -51,13 +53,14 @@ class Entity {
 	void progress();
 	void useAbility();
 
-	template <typename T>
-	void basicAttack(T &target) {
-		std::cout << getName() << " attacks " << target.getName() << " for " << getAttack() << " damage." << "\n";
+	virtual void basicAttack(Entity &target) {
+		std::cout << this->getName() << " attacks " << target.getName() << " for " << this->getAttack() << " damage." << "\n";
 		target.modifyHealth(-getAttack());
 		target.isAlive();
 	}
 	double getAttack() const;
+	
+	
 };
 
 #endif
