@@ -22,9 +22,11 @@ class Entity {
 	double manaGeneration; 
 	bool alive;
 	std::vector<Ability> abilities;
+	double power;
+	double rawPower;
 	public:
 	virtual ~Entity() {}
-	
+
 	Entity(std::string name, double health, double attack, double mana, double manaGeneration, bool alive) 
 		:name(name), maxHealth(health), currentHealth(health), attack(attack), mana(mana), manaGeneration(manaGeneration), alive(alive) {}
 
@@ -48,6 +50,7 @@ class Entity {
 	void modifyMana(double changeInMana);
 	double getMana() const;
 	double getManaGeneration() const;
+	void setManaGeneration(double manaGeneration);
 
 
 	void progress();
@@ -59,7 +62,11 @@ class Entity {
 		target.isAlive();
 	}
 	double getAttack() const;
+	void setAttack(double attack);
 	
+	double getPower() const;	
+	double calculatePower();
+	void setPower(double power); 
 	
 };
 

@@ -77,6 +77,10 @@ double Entity::getManaGeneration() const{
 	return this->manaGeneration;
 }
 
+void Entity::setManaGeneration(double manaGeneration) {
+	this->manaGeneration += manaGeneration;
+}
+
 
 void Entity::progress() {
 
@@ -87,4 +91,17 @@ void Entity::useAbility() {
 
 double Entity::getAttack() const {
 	return this->attack;
+}
+
+double Entity::setAttack(double attack) {
+	this->attack += attack;
+}
+
+
+double Entity::getPower() const {
+	return this->power;
+}
+
+void Entity::setPower(double power) {
+	this->power += power;
 }

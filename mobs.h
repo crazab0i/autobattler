@@ -8,7 +8,7 @@
 #include "player.h"
 
 class Warrior : public Entity {
-	private: 
+	private:
 	public:
 		Warrior()
 			: Entity("Warrior", 10, 2, 0, 0.5, true) {
@@ -23,7 +23,7 @@ class Warrior : public Entity {
 		
 
 		void basicAttack(Entity &player) override {
-			std::cout << "\033[1;37m" << getName() << "\033[0m" << " attacks " << "\033[1;31m" << player.getName() << "\033[0m" << " for " << "\033[1;38;5;88m" << getAttack() << " damage." << "\033[0m" << "\n";
+			std::cout << "\033[1;31m" << getName() << "\033[0m" << " attacks " << "\033[1;37m" << player.getName() << "\033[0m" << " for " << "\033[1;38;5;88m" << getAttack() << " damage." << "\033[0m" << "\n";
 			player.modifyHealth(-getAttack());
 			player.isAlive();
 	}
