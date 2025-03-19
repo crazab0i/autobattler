@@ -4,6 +4,8 @@
 #include <vector>
 #include <iostream>
 #include <cstdlib>
+#include <thread>
+#include <chrono>
 
 #include "item.h"
 #include "system.h"
@@ -23,7 +25,7 @@ class Shop {
 	}
 
 	void print_shop();
-	void buy_item(int pos);
+	bool buy_item(int pos);
 };
 
 #endif

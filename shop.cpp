@@ -12,6 +12,7 @@ void Shop::print_shop() {
 			break;
 		}
 		system("clear");
+		std::cout << player->getGold() << "\n";
 		items[pos].printItemStats();
 		letter = getKeyPress();
 		system("clear");
@@ -38,10 +39,12 @@ void Shop::print_shop() {
 			}
 		}
 		if (letter == 'b') {
-			buy_item(pos);
-			std::cout << "Bought Item" << std::endl;
-			if (pos == length && pos > 0) {
-				pos--;
+			//std::cout << "b pressed";
+			//std::this_thread::sleep_for(std::chrono::seconds(2));
+			if (buy_item(pos)) {
+				if (pos == length && pos > 0) {
+					pos--;
+				}
 			}
 		}
 	}
@@ -52,8 +55,25 @@ void Shop::print_shop() {
 	
 }
 
-void Shop::buy_item(int pos) {
+bool Shop::buy_item(int pos) {
 	Item item = items[pos];
+	if (item.getValue() > player->getGold()) {
+		while (true) {
+			system("clear");
+			std::cout << "Not Enough Gold!!! \npress q to continue" << "\n";
+			char letter;
+			letter = getKeyPress();
+			if (letter == 'q') {
+				break;
+			}
+		}
+		return false;
+	}
 	items.erase(items.begin() + pos);
 	player->addItem(item);
+	player->changeGold(-item.getValue());
+	system("clear");
+	std::cout << "Bought Item " << item.getName() << std::endl;
+	std::this_thread::sleep_for(std::chrono::seconds(2));
+	return true;
 }

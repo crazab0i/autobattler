@@ -4,14 +4,17 @@
 void Player::changeGold(int diffGold) {
 		this->gold += diffGold;
 }
+const int Player::getGold() {
+	return this->gold;
+}
 
 void Player::addItem(Item item) {
 	playerItemInventory.push_back(item);
-	changeMaxHealth(item.getHealth());
-	changeAttack(item.getAttack());
-	changeMana(item.getMana());
-	changeManaGeneration(item.getManaGeneration());
-	changePower(item.getPower());
+	itemAttack += item.getAttack();
+	itemHealth += item.getHealth();
+	itemMana += item.getMana();
+	itemManaGeneration += item.getManaGeneration();
+	itemPower += item.getPower();
 }
 
 void Player::printPlayerInventory() {

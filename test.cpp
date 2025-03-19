@@ -9,6 +9,7 @@ int main() {
 	*/
 	Player craza("craza");
 	Shop shop1(&craza);
+	craza.changeGold(20);
 	shop1.print_shop();
 	craza.printPlayerInventory();
 	craza.printStats();

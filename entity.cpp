@@ -9,18 +9,6 @@ std::string Entity::getName() const {
 void Entity::addAbility(std::string ability, std::string ability_desc, std::vector<double> ability_stats) {
 	this->abilities.push_back({ability, ability_desc, ability_stats});
 }
-void Entity::printStats() const {
-	std::cout << "               Name: " << name << "\n";
-	std::cout << "         Max Health: " << this->getMaxHealth() << "\n";
-	std::cout << "     Current Health: " << this->getCurrentHealth() << "\n";
-	std::cout << "             Attack: " << this->getAttack() << "\n";
-	std::cout << "               Mana: " << this->getMana() << "\n";
-	std::cout << "  Mana regeneration: " <<this->getManaGeneration() << "\n";
-	for (size_t i = 0; i < abilities.size(); i++) {
-		std::cout << "       Ability name: " << abilities[i].abilityName << "\n";
-		std::cout << "Ability description: " << abilities[i].abilityDesc << "\n";
-		}
-}
 
 
 void Entity::setMaxHealth(double maxHealth) {
@@ -93,7 +81,7 @@ double Entity::getAttack() const {
 	return this->attack;
 }
 
-double Entity::setAttack(double attack) {
+void Entity::setAttack(double attack) {
 	this->attack += attack;
 }
 

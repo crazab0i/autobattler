@@ -30,12 +30,24 @@ class Entity {
 	Entity(std::string name, double health, double attack, double mana, double manaGeneration, bool alive) 
 		:name(name), maxHealth(health), currentHealth(health), attack(attack), mana(mana), manaGeneration(manaGeneration), alive(alive) {}
 
-	Entity(std::string name, double health, double attack, double mana, double manaGeneration, bool alive, std::vector<Ability> abilities) 
-		:name(name), maxHealth(health), currentHealth(health), attack(attack), mana(mana), manaGeneration(manaGeneration), alive(alive), abilities(abilities) {}
+	Entity(std::string name, double health, double attack, double mana, double manaGeneration, bool alive, std::vector<Ability> abilities, double power) 
+		:name(name), maxHealth(health), currentHealth(health), attack(attack), mana(mana), manaGeneration(manaGeneration), alive(alive), abilities(abilities), power(power) {}
 
-	std::string getName() const;
+	std::string getName() const; 
 	void addAbility(std::string ability, std::string ability_desc, std::vector<double> ability_stats);
-	void printStats() const;
+
+	virtual void printStats() const {
+	std::cout << "               Name: " << name << "\n";
+	std::cout << "         Max Health: " << this->getMaxHealth() << "\n";
+	std::cout << "     Current Health: " << this->getCurrentHealth() << "\n";
+	std::cout << "             Attack: " << this->getAttack() << "\n";
+	std::cout << "               Mana: " << this->getMana() << "\n";
+	std::cout << "  Mana regeneration: " <<this->getManaGeneration() << "\n";
+	for (size_t i = 0; i < abilities.size(); i++) {
+		std::cout << "       Ability name: " << abilities[i].abilityName << "\n";
+		std::cout << "Ability description: " << abilities[i].abilityDesc << "\n";
+		}
+}
 
 	void setMaxHealth(double health);
 	void setCurrentHealth(double health);
@@ -67,6 +79,7 @@ class Entity {
 	double getPower() const;	
 	double calculatePower();
 	void setPower(double power); 
+
 	
 };
 
